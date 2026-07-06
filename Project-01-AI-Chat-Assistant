@@ -1,0 +1,41 @@
+README.md
+Project-01-AI-Chat-Assistant
+
+# AI Chat Assistant with Memory
+
+## Project Overview
+
+Developed an intelligent conversational AI assistant using **n8n Cloud** and **Google Gemini** to demonstrate AI workflow automation and context-aware conversations. The assistant accepts user messages through a chat interface, generates natural language responses using a large language model (LLM), and maintains conversation context with memory for a more personalized user experience.
+
+## Key Features
+
+* Designed an AI-powered chatbot using n8n's AI Agent architecture.
+* Integrated Google Gemini as the primary large language model.
+* Implemented conversational memory to maintain context across multiple interactions.
+* Configured a Chat Trigger for real-time user communication.
+* Customized the AI Agent with system instructions to control behavior and response quality.
+* Tested and validated workflow execution through n8n Cloud's chat interface.
+
+## Technologies Used
+
+* n8n Cloud
+* Google Gemini API
+* AI Agent
+* Chat Trigger
+* Simple Memory
+* Prompt Engineering
+
+## Skills Demonstrated
+
+* AI Workflow Automation
+* Large Language Model (LLM) Integration
+* Conversational AI Development
+* Prompt Engineering
+* Workflow Design
+* Context Management with AI Memory
+* Automation Testing and Debugging
+
+## Outcome
+
+Successfully built and deployed a functional AI chat assistant capable of engaging in natural conversations while retaining contextual information throughout a session. This project demonstrates foundational skills in designing AI-powered automation workflows using n8n and modern LLM technologies.
+─ README.md
