@@ -1,0 +1,212 @@
+{
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "availableInChat": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -288,
+        -160
+      ],
+      "id": "4937721c-d81f-4075-b009-4dab3dc37ee2",
+      "name": "When chat message received",
+      "webhookId": "c6db7df5-af93-4f65-bd47-c970c8fc5094"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -32,
+        -160
+      ],
+      "id": "790b0e1a-d357-45f9-aad6-1738c747186e",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        -16
+      ],
+      "id": "0aa0b199-4f59-4ee4-a0b1-0520ea0e9193",
+      "name": "Simple Memory",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Use this tool to record expenses in Google Sheets. When the user mentions spending money, buying something, paying for an item or service, or wants to log an expense, add a new row to the spreadsheet with the date, category, amount, and description.",
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1Y5znTvosFLiKeGRSBNbSvAFINcsl19PpybnwEdOXi-Y",
+          "mode": "list",
+          "cachedResultName": "AI Expense Tracker",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Y5znTvosFLiKeGRSBNbSvAFINcsl19PpybnwEdOXi-Y/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Y5znTvosFLiKeGRSBNbSvAFINcsl19PpybnwEdOXi-Y/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "\nDate": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('_Date', ``, 'string') }}",
+            "Category": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Category', ``, 'string') }}",
+            "Amount": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Amount', ``, 'string') }}",
+            "Description": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Description', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "\nDate",
+              "displayName": "\nDate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Category",
+              "displayName": "Category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Amount",
+              "displayName": "Amount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Description",
+              "displayName": "Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        144,
+        -16
+      ],
+      "id": "82c96ef7-99d3-4a58-afef-39ad08bf05d8",
+      "name": "Append row in sheet in Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "PEst9sEDSZ6bBKZ4",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        -176,
+        0
+      ],
+      "id": "2b3f1809-fb29-4018-a4f2-a927add4bb97",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "DF8D7dt1Dbz3F7SJ",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "8020ffca-a6f0-4b60-a788-7fb2bb3c786a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "2fce0878c00c868ceaafe14970f67a2749fe3972e27605c6461bfe5f680a1ff5"
+  },
+  "nodeGroups": [],
+  "id": "bHezgwSqzJHRxF0k",
+  "tags": []
+}
